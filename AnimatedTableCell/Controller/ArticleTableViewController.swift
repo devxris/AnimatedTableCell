@@ -20,5 +20,22 @@ class ArticleTableViewController: UITableViewController {
 	private let postImages = ["imessage-sticker-pack", "face-detection-featured", "speech-kit-featured",
 	                          "vapor-web-framework", "cagradientlayer-demo", "calayer-featured"]
 
-
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		tableView.estimatedRowHeight = 258
+		tableView.rowHeight = UITableViewAutomaticDimension
+	}
+	
+	// MARK: UITableViewDataSource and UITableViewDelegate
+	override func numberOfSections(in tableView: UITableView) -> Int { return 1 }
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return postTitles.count
+	}
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ArticleCell
+		cell.titleLabel.text = postTitles[indexPath.row]
+		cell.postImageView.image = UIImage(named: postImages[indexPath.row])
+		return cell
+	}
 }
