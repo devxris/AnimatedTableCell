@@ -1,0 +1,2 @@
+# AnimatedTableCell
+Animating UITableViewCell  
